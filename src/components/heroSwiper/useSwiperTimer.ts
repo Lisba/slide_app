@@ -28,7 +28,13 @@ export const useSwiperTimer = ({
       });
     }, PROGRESS_BAR_UPDATE_INTERVAL_MILISECONDS);
     return () => clearInterval(intervalRef.current ?? 0);
-  }, [handleTransition]);
+  }, [
+    PROGRESS_BAR_UPDATE_INTERVAL_MILISECONDS,
+    PROGRESS_BAR_UPDATE_INTERVAL_SECONDS,
+    SLIDE_DURATION_SECONDS,
+    handleTransition,
+    intervalRef,
+  ]);
 
   return { timer, setTimer };
 };

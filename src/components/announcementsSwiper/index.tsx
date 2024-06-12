@@ -1,4 +1,4 @@
-import { useState, FC } from 'react';
+import React, { useState, FC } from 'react';
 import Swiper from 'react-native-swiper';
 import { Text, View, Pressable } from 'react-native';
 import { StackNavigation } from '@navigation';
@@ -29,8 +29,13 @@ const AnnouncementSwiper: FC<TAnnouncementSwiper> = ({
     }
   };
 
-  if (loading) return <Text>{'Loading...'}</Text>;
-  if (error) return <Text>{`Error loading data: ${error?.message}`}</Text>;
+  if (loading) {
+    return <Text>{'Loading...'}</Text>;
+  }
+
+  if (error) {
+    return <Text>{`Error loading data: ${error?.message}`}</Text>;
+  }
 
   return (
     <View

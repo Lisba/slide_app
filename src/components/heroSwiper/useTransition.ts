@@ -18,12 +18,12 @@ export const useTransition = ({
 }: TuseTransitionProps) => {
   const fadeAnimationRef = useRef(new Animated.Value(1)).current;
 
-  const stopTimer = () => {
+  const stopTimer = useCallback(() => {
     if (intervalRef.current) {
       clearInterval(intervalRef.current);
       intervalRef.current = null;
     }
-  };
+  }, [intervalRef]);
 
   const handleTransition = useCallback(() => {
     stopTimer();
@@ -47,11 +47,12 @@ export const useTransition = ({
       });
     });
   }, [
-    activeIndex,
+    stopTimer,
     fadeAnimationRef,
-    slideCountMaxIndex,
-    setActiveIndex,
     videoRefs,
+    activeIndex,
+    setActiveIndex,
+    slideCountMaxIndex,
   ]);
 
   return { fadeAnimationRef, handleTransition };
