@@ -159,6 +159,7 @@ const HeroSwiper: FC<THeroSwiper> = ({
                     source={{
                       uri: `${slideData.slideEyebrowImageUrl}`,
                     }}
+                    resizeMode="cover"
                   />
                 )}
                 {slideData.slideTitle && (

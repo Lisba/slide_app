@@ -5,11 +5,12 @@ import {
   NavigationProp,
 } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home, Webview } from '@screens';
+import { Home, Webview, MultiList } from '@screens';
 
 export type RootStackParamList = {
   Home: undefined;
   Webview: { url: string };
+  MultiList: undefined;
 };
 export type StackNavigation = NavigationProp<RootStackParamList>;
 
@@ -33,6 +34,7 @@ const Navigation = () => {
             headerShown: false,
           }}
         />
+        <Stack.Screen name="MultiList" component={MultiList} />
         <Stack.Screen name="Webview" component={Webview} />
       </Stack.Navigator>
     </NavigationContainer>

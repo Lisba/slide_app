@@ -76,7 +76,7 @@ export const styles = StyleSheet.create({
     width: 200,
   },
   eyebrowImage: {
-    width: 190,
+    width: 150,
     height: 40,
     fontSize: 1,
     zIndex: 1,

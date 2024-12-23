@@ -6,21 +6,22 @@
     "start": "react-native start --reset-cache --experimental-debugger",
     "android": "react-native run-android",
     "ios": "react-native run-ios --udid 311BBAA9-4CE5-4154-9442-3C0E48116B40",
-    "android:clean": "cd android/ && ./gradlew clean",
-    "ios:clean": "cd ios/ && rm -rf build && rm -rf Pods",
+    "android:clean": "rm -fr node_modules && pnpm store prune && pnpm install && cd android/ && ./gradlew clean && ./gradlew --stop",
+    "ios:clean": "rm -fr node_modules && rm -rf ios/build && rm -rf ios/Pods && rm -rf ~/Library/Caches/CocoaPods && pod cache clean --all && pnpm install",
+    "postinstall": "npx pod-install ios",
     "build:ios": "react-native bundle --entry-file='index.js' --bundle-output='./ios/main.jsbundle' --dev=false --platform='ios'",
     "build:android": "react-native bundle --entry-file index.js --dev false --platform android --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res",
-    "postinstall": "npx pod-install ios",
-    "lint": "eslint .",
-    "format": "prettier src/**/*.js --write .",
-    "test": "jest",
-    "codegen": "graphql-codegen --config codegen.ts",
     "ios:list:devices": "xcrun xctrace list devices",
     "android:list:devices": "adb devices",
+    "test": "jest",
+    "lint": "eslint .",
+    "format": "prettier src/**/*.js --write .",
+    "codegen": "graphql-codegen --config codegen.ts",
     "prepare": "husky"
   },
   "dependencies": {
     "@apollo/client": "3.10.4",
+    "@babel/runtime": "^7.24.8",
     "@react-navigation/native": "6.1.17",
     "@react-navigation/native-stack": "6.9.26",
     "graphql": "16.8.1",
@@ -39,7 +40,6 @@
   "devDependencies": {
     "@babel/core": "7.24.6",
     "@babel/preset-env": "7.24.6",
-    "@babel/runtime": "7.24.6",
     "@react-native/babel-preset": "0.74.84",
     "@react-native/eslint-config": "0.74.84",
     "@react-native/metro-config": "0.74.84",
@@ -72,6 +72,7 @@
     "jest-environment-jsdom": "29.7.0",
     "prettier": "3.3.2",
     "react-test-renderer": "18.3.1",
+    "reactotron-react-native": "^5.1.7",
     "ts-jest": "29.1.4",
     "ts-node": "10.9.2",
     "typescript": "5.4.5",
@@ -80,5 +81,5 @@
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "yarn@3.6.4"
+  "packageManager": "pnpm@9.1.4"
 }

@@ -18,6 +18,8 @@
       "@screens/*": ["src/screens/*"],
       "@theme": ["src/theme"],
       "@theme/*": ["src/theme/*"],
+      "@types": ["src/helpers/types"],
+      "@types/*": ["src/helpers/types/*"],
       "@utils": ["src/utils"],
       "@utils/*": ["src/utils/*"]
     }
